@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "geoLiveWeb", "geoLiveWeb\geoLiveWeb.csproj", "{AC663450-96CF-49A9-B273-E02AADBB3DF1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{627693B6-60FE-4145-AB96-0CAACEFF73AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{83BC70D0-71F6-4034-9E3E-DC976C455299}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1 = PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{971857B4-BEAB-49E2-AB2B-B041793AF956}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Templates\geoLiveWeb.json = PublishScripts\Templates\geoLiveWeb.json
+		PublishScripts\Templates\geoLiveWeb.param.dev.json = PublishScripts\Templates\geoLiveWeb.param.dev.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC663450-96CF-49A9-B273-E02AADBB3DF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC663450-96CF-49A9-B273-E02AADBB3DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC663450-96CF-49A9-B273-E02AADBB3DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC663450-96CF-49A9-B273-E02AADBB3DF1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{83BC70D0-71F6-4034-9E3E-DC976C455299} = {627693B6-60FE-4145-AB96-0CAACEFF73AF}
+		{971857B4-BEAB-49E2-AB2B-B041793AF956} = {627693B6-60FE-4145-AB96-0CAACEFF73AF}
+	EndGlobalSection
+EndGlobal
