@@ -1,0 +1,26 @@
+﻿<Window x:Class="wpfMap.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+        xmlns:local="clr-namespace:wpfMap"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <ControlTemplate x:Key="CutomPushpinTemplate" TargetType="m:Pushpin">
+            <Grid x:Name="ContentGrid" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel>
+                    <Grid Margin="0" Width="16" Height="16">
+                        <Rectangle Fill="White" Stroke="#FF005167" RadiusX="8" RadiusY="8"/>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <m:Map x:Name="map" CredentialsProvider="AuQ2kqDNtkNtNd0FU1nPWQFPBo14nJiZ3VkaukVwnzB9DGy6lCrfSSX6cHAEjxHE">
+            <Button x:Name="btnFind" Content="hitta" Width="50" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="8" Click="btnFind_Click"></Button>
+        </m:Map>
+    </Grid>
+</Window>
