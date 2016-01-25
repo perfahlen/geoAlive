@@ -33,28 +33,30 @@ namespace RealTimeModules
 
         public GisDataPump()
         {
-            //Task.Factory.StartNew(() =>
-            //{
+            Task.Factory.StartNew(() =>
+            {
                 ril = new List<RouteInfo>();
                 //read all route-files into RouteInfoObjects...
-                foreach (var f in System.IO.Directory.GetFiles(routeDictionary, "*.json").Take(1))
+                foreach (var f in System.IO.Directory.GetFiles(routeDictionary, "*.json"))
                 {
                     var file = new FileInfo(f);
-                    var ri = new RouteInfo(file, (geodata) =>
+                    var ri = new RouteInfo(file, (id, geodata) =>
                     {
-                        this.InvokeToAll<GeoCars>(geodata,"pos");
-                    }, false);
+                        this.InvokeToAll<GeoCars>(new { id, geodata },"pos");
+                    });
                     //Composable.GetExport<IXLogger>().Warning("Starting timer");
                     //ri.Start();
                     ril.Add(ri);
+                    var r = new Random(42);
+                    ri.Start(r.Next(1000,5000));
                 }
 
 
-                foreach(var r in ril)
-                {
-                    r.Start();
-                }
-            //});
+                //foreach(var r in ril)
+                //{
+                //    r.Start();
+                //}
+            });
         }
     }
 
@@ -64,12 +66,13 @@ namespace RealTimeModules
         private int routePos;
         private bool _loop;
         private System.Timers.Timer _timer;
-        private Action<GeoData> _action;
+        private Action<string, GeoData> _action;
         private string RouteId { get; set; }
         private IXSocketJsonSerializer jsonSerializer;
 
-        public RouteInfo(FileInfo file, Action<GeoData> onTick, bool loop = true)
+        public RouteInfo(FileInfo file, Action<string, GeoData> onTick, bool loop = true)
         {
+            this.Routes = new List<GeoData>();
             this.RouteId = file.Name;
 
             this.jsonSerializer = Composable.GetExport<IXSocketJsonSerializer>();
@@ -86,9 +89,9 @@ namespace RealTimeModules
             this._loop = loop;
         }
 
-        public void Start()
+        public void Start(int interval)
         {
-            this._timer = new System.Timers.Timer(1000);
+            this._timer = new System.Timers.Timer(interval);
             this._timer.Elapsed += (s, e) =>
             {
                 //get geodata
@@ -101,9 +104,9 @@ namespace RealTimeModules
                         return;
                     }
                 }
-                var pos = this.Routes[routePos];
+                var pos = this.Routes[routePos++];
                 //call action
-                _action(pos);
+                _action(this.RouteId, pos);
             };
             _timer.Start();
         }
