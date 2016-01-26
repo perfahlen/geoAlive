@@ -56,7 +56,7 @@ socketMap.setObservation = function(feature){
 
 	var style = new createStyle(currentFeature);
 	currentFeature.setStyle(style);
-	source.addFeatures([currentFeature]);
+	source.addFeatures([currentFeature]);   
 };
 
 socketMap.findFeature = function(currentFeature, source){

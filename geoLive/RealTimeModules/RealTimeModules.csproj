@@ -80,8 +80,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GisDataPump.cs" />
+    <Compile Include="Controllers\GeoCars.cs" />
+    <Compile Include="Controllers\GisDataPump.cs" />
+    <Compile Include="Model\GeoData.cs" />
+    <Compile Include="Model\RouteInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RouteHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
