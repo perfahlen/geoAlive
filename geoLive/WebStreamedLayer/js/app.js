@@ -52,14 +52,23 @@ var createStyle = function(feature){
 socketMap.setObservation = function(feature){
 	var observationLayer = map.getLayers().getArray()[1];
 	var source = observationLayer.getSource();
-	var currentFeature = socketMap.findFeature(feature, source) || feature;
+	var currentFeatures = socketMap.findFeature(feature, source) || feature;
+	var currentFeature = currentFeatures[0] || feature;
 
 	var style = new createStyle(currentFeature);
 	currentFeature.setStyle(style);
-	source.addFeatures([currentFeature]);
+
+	if (currentFeatures.length > 1) {
+	    for (var i = 0; i < currentFeatures.length; i++) {
+	        source.removeFeature(currentFeatures[i]);
+	    }
+	}
+
+    source.addFeatures([currentFeature]);
 };
 
-socketMap.findFeature = function(currentFeature, source){
+socketMap.findFeature = function (currentFeature, source) {
+    //debugger;
 	var features = source.getFeatures();
 	if (features.length === 0) return null;
 
@@ -69,8 +78,12 @@ socketMap.findFeature = function(currentFeature, source){
 		var attributes = feature.get("attributes");
 		return attributes.id === currentId;
 	});
-	var feature = findFeatures.length === 1 ? findFeatures[0] : null;
-	return feature;
+    
+	var feature = findFeatures.length > 0 ? findFeatures[0] : null;
+	//if (findFeatures.length >= 1) {
+    //    findFeatures
+	//}
+	return findFeatures;
 };
 
 socketMap.transformFeature = function (feature) {
