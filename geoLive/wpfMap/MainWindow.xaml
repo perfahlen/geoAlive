@@ -20,7 +20,6 @@
     </Window.Resources>
     <Grid>
         <m:Map x:Name="map" CredentialsProvider="AuQ2kqDNtkNtNd0FU1nPWQFPBo14nJiZ3VkaukVwnzB9DGy6lCrfSSX6cHAEjxHE">
-            <Button x:Name="btnFind" Content="hitta" Width="50" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="8" Click="btnFind_Click"></Button>
         </m:Map>
     </Grid>
 </Window>

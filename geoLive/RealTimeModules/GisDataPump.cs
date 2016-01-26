@@ -27,7 +27,7 @@ namespace RealTimeModules
     [XSocketMetadata("GisDataPump", PluginRange.Internal)]
     public class GisDataPump : XSocketController
     {
-        private string routeDictionary = @"C:\Users\Uffe\Documents\GitHub\geoAlive\geoLive\geoLiveWeb\routeFiles";
+        private string routeDictionary = @"C:\Users\pfahlen\Documents\geoAlive\geoLive\geoLiveWeb\routeFiles";
 
         List<RouteInfo> ril;
 

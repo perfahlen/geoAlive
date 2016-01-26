@@ -28,45 +28,40 @@ namespace wpfMap
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            ControlTemplate template = (ControlTemplate)this.FindResource("CutomPushpinTemplate");
-            var pin = new IdPushpin();
-            pin.Location = new Microsoft.Maps.MapControl.WPF.Location(63, 15);
-            pin.Id = "kalle";
-            pin.Template = template;
-            map.Children.Add(pin);
-
-            var pin2 = new IdPushpin();
-            pin2.Location = new Microsoft.Maps.MapControl.WPF.Location(60, 13);
-            pin2.Id = "apa";
-            pin2.Template = template;
-            map.Children.Add(pin2);
+            var dc = new DataClient(this.map, this);
+            //CreatePushpins();
         }
-
-        private void btnFind_Click(object sender, RoutedEventArgs e)
-        {
-            UpdatePushpin("apa");
-        }
+ 
 
         public void UpdatePushpin(string id, Microsoft.Maps.MapControl.WPF.Location location = null)
         {
-            var pins = map.Children;
-
-            foreach (var item in pins)
+            this.Dispatcher.Invoke(delegate ()
             {
-                if (item.GetType() != typeof(IdPushpin))
-                    continue;
-                var idPin = (IdPushpin)item;
-                if (idPin.Id == id)
+
+                var pins = map.Children;
+                bool found = false;
+                foreach (var item in pins)
                 {
-                    var _location = idPin.Location;
-                    _location.Latitude += 1;
-                    _location.Longitude += 1;
-                    idPin.Location = _location;
-                    map.Children.Remove(idPin);
-                    map.Children.Add(idPin);
-                    break;
+                    if (item.GetType() != typeof(IdPushpin))
+                        continue;
+                    var idPin = (IdPushpin)item;
+                    if (idPin.Id == id)
+                    {
+                        found = true;
+                        idPin.Location = location;
+                        map.Children.Remove(idPin);
+                        map.Children.Add(idPin);
+                        break;
+                    }
                 }
-            }
+                if (!found)
+                {
+                    ControlTemplate template = (ControlTemplate)this.FindResource("CutomPushpinTemplate");
+                    var pin = new IdPushpin() { Location = location, Id = id };
+                    pin.Template = template;
+                    map.Children.Add(pin);
+                }
+            });
         }
     }
 }
