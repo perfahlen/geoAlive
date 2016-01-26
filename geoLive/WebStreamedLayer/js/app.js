@@ -49,26 +49,38 @@ var createStyle = function(feature){
 	};
 
 
-socketMap.setObservation = function(feature){
-	var observationLayer = map.getLayers().getArray()[1];
-	var source = observationLayer.getSource();
-	var currentFeatures = socketMap.findFeature(feature, source) || feature;
-	var currentFeature = currentFeatures[0] || feature;
+socketMap.updating = false;
+socketMap.setObservation = function (feature) {
+    
+    if (!socketMap.updating) {
 
-	var style = new createStyle(currentFeature);
-	currentFeature.setStyle(style);
+        socketMap.updating = true;
 
-	if (currentFeatures.length > 1) {
-	    for (var i = 0; i < currentFeatures.length; i++) {
-	        source.removeFeature(currentFeatures[i]);
-	    }
-	}
+        try{
+            var observationLayer = map.getLayers().getArray()[1];
+            var source = observationLayer.getSource();
+            var currentFeatures = socketMap.findFeature(feature, source) || feature;
+            var currentFeature = currentFeatures[0] || feature;
 
-    source.addFeatures([currentFeature]);
+            var style = new createStyle(currentFeature);
+            currentFeature.setStyle(style);
+
+            if (currentFeatures.length > 1) {
+                for (var i = 0; i < currentFeatures.length; i++) {
+                    source.removeFeature(currentFeatures[i]);
+                }
+            }
+
+            source.addFeatures([currentFeature]);
+        }catch(x){
+            socketMap.updating = false;
+        }
+        socketMap.updating = false;
+    }
 };
-
 socketMap.findFeature = function (currentFeature, source) {
     //debugger;
+
 	var features = source.getFeatures();
 	if (features.length === 0) return null;
 
