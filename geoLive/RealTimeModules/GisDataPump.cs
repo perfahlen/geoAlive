@@ -22,12 +22,12 @@ namespace RealTimeModules
 
     /// <summary>
     /// There will only be one instance of this class
-    /// A singleton...
     /// </summary>
     [XSocketMetadata("GisDataPump", PluginRange.Internal)]
     public class GisDataPump : XSocketController
     {
-        private string routeDictionary = @"C:\Users\pfahlen\Documents\geoAlive\geoLive\geoLiveWeb\routeFiles";
+        
+        private string routeDictionary = "routeFiles";
 
         List<RouteInfo> ril;
 
@@ -44,18 +44,10 @@ namespace RealTimeModules
                     {
                         this.InvokeToAll<GeoCars>(new { id, geodata },"pos");
                     });
-                    //Composable.GetExport<IXLogger>().Warning("Starting timer");
-                    //ri.Start();
                     ril.Add(ri);
                     var r = new Random(42);
-                    ri.Start(r.Next(1000,5000));
+                    ri.Start(r.Next(3000,5000));
                 }
-
-
-                //foreach(var r in ril)
-                //{
-                //    r.Start();
-                //}
             });
         }
     }
@@ -80,11 +72,9 @@ namespace RealTimeModules
             JArray jArr = (JArray)JsonConvert.DeserializeObject(System.IO.File.ReadAllText(file.FullName));
             foreach (var item in jArr)
             {
-                //Console.WriteLine("Item {0}, {1}", item[0], item[1]);
                 this.Routes.Add(new GeoData { Lat = (double)item[0], Lng = (double)item[1] });
             }
             
-            //this.Routes = routes;
             this._action = onTick;
             this._loop = loop;
         }
