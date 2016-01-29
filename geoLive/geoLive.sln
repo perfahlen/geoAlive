@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "geoLiveWeb", "geoLiveWeb\geoLiveWeb.csproj", "{AC663450-96CF-49A9-B273-E02AADBB3DF1}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{627693B6-60FE-4145-AB96-0CAACEFF73AF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{83BC70D0-71F6-4034-9E3E-DC976C455299}"
@@ -24,7 +22,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealTimeModules", "RealTime
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealTimeServer", "RealTimeServer\RealTimeServer.csproj", "{B8B50D82-CF5B-4EE0-996B-10402626ACA3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wpfMap", "wpfMap\wpfMap.csproj", "{0CAD7904-140E-4444-8918-3556173C19CD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMap", "wpfMap\WpfMap.csproj", "{0CAD7904-140E-4444-8918-3556173C19CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "geoLiveWeb", "geoLiveWeb\geoLiveWeb.csproj", "{AC663450-96CF-49A9-B273-E02AADBB3DF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,10 +32,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AC663450-96CF-49A9-B273-E02AADBB3DF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AC663450-96CF-49A9-B273-E02AADBB3DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AC663450-96CF-49A9-B273-E02AADBB3DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AC663450-96CF-49A9-B273-E02AADBB3DF1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C324D9E5-353C-4723-87A2-6DEFDF6430DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C324D9E5-353C-4723-87A2-6DEFDF6430DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C324D9E5-353C-4723-87A2-6DEFDF6430DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -52,6 +48,10 @@ Global
 		{0CAD7904-140E-4444-8918-3556173C19CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CAD7904-140E-4444-8918-3556173C19CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CAD7904-140E-4444-8918-3556173C19CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC663450-96CF-49A9-B273-E02AADBB3DF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC663450-96CF-49A9-B273-E02AADBB3DF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC663450-96CF-49A9-B273-E02AADBB3DF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC663450-96CF-49A9-B273-E02AADBB3DF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
