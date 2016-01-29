@@ -28,16 +28,19 @@ namespace wpfMap
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            var dc = new DataClient(this.map, this);
-            //CreatePushpins();
+            var dc = new DataClient();
+            dc.ReceivedGeoCarEvent += Dc_ReceivedGeoCarEvent;
         }
- 
 
-        public void UpdatePushpin(string id, Microsoft.Maps.MapControl.WPF.Location location = null)
+        private void Dc_ReceivedGeoCarEvent(string id, Microsoft.Maps.MapControl.WPF.Location location)
+        {
+            UpdatePushpin(id, location);
+        }
+
+        void UpdatePushpin(string id, Microsoft.Maps.MapControl.WPF.Location location)
         {
             this.Dispatcher.Invoke(delegate ()
             {
-
                 var pins = map.Children;
                 bool found = false;
                 foreach (var item in pins)
