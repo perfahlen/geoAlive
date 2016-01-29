@@ -29,24 +29,25 @@ namespace RealTimeModules
         
         private string routeDictionary = "routeFiles";
 
-        List<RouteInfo> ril;
+        List<RouteInfo> routes;
 
         public GisDataPump()
         {
             Task.Factory.StartNew(() =>
             {
-                ril = new List<RouteInfo>();
+                routes = new List<RouteInfo>();
                 //read all route-files into RouteInfoObjects...
-                foreach (var f in System.IO.Directory.GetFiles(routeDictionary, "*.json"))
+                
+                foreach (var filePath in System.IO.Directory.GetFiles(routeDictionary, "*.json"))
                 {
-                    var file = new FileInfo(f);
-                    var ri = new RouteInfo(file, (id, geodata) =>
+                    var file = new FileInfo(filePath);
+                    var routeInfo = new RouteInfo(file, (id, geodata) =>
                     {
                         this.InvokeToAll<GeoCars>(new { id, geodata },"pos");
                     });
-                    ril.Add(ri);
-                    var r = new Random(42);
-                    ri.Start(r.Next(3000,5000));
+                    routes.Add(routeInfo);
+                    var random = new Random(42);
+                    routeInfo.Start(random.Next(3000,5000));
                 }
             });
         }
