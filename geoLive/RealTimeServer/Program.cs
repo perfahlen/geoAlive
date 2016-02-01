@@ -14,7 +14,7 @@ namespace RealTimeServer
             using (var container = Composable.GetExport<IXSocketServerContainer>())
             {
                 container.Start();
-                //Console.ReadLine();
+                Console.ReadLine();
             }
         }
     }
