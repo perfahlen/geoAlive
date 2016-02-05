@@ -28,7 +28,7 @@ namespace RealTimeModules.Controllers
             Task.Factory.StartNew(() =>
             {
                 ril = new List<RouteInfo>();
-                //read all route-files into RouteInfoObjects...
+                //read all route-files into RouteInfoObjects.
                 foreach (var routeFile in Directory.GetFiles(routeDictionary, "*.json"))
                 {
                     var file = new FileInfo(routeFile);
