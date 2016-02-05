@@ -16,8 +16,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{
 		PublishScripts\Templates\geoLiveWeb.param.dev.json = PublishScripts\Templates\geoLiveWeb.param.dev.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebStreamedLayer", "WebStreamedLayer\WebStreamedLayer.csproj", "{C324D9E5-353C-4723-87A2-6DEFDF6430DC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealTimeModules", "RealTimeModules\RealTimeModules.csproj", "{8F9B371E-321B-4B94-8B79-74C0363AE2ED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealTimeServer", "RealTimeServer\RealTimeServer.csproj", "{B8B50D82-CF5B-4EE0-996B-10402626ACA3}"
@@ -32,10 +30,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C324D9E5-353C-4723-87A2-6DEFDF6430DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C324D9E5-353C-4723-87A2-6DEFDF6430DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C324D9E5-353C-4723-87A2-6DEFDF6430DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C324D9E5-353C-4723-87A2-6DEFDF6430DC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8F9B371E-321B-4B94-8B79-74C0363AE2ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8F9B371E-321B-4B94-8B79-74C0363AE2ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F9B371E-321B-4B94-8B79-74C0363AE2ED}.Release|Any CPU.ActiveCfg = Release|Any CPU

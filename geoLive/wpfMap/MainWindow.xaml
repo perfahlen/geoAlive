@@ -19,7 +19,7 @@
         </ControlTemplate>
     </Window.Resources>
     <Grid>
-        <m:Map x:Name="map" CredentialsProvider="AuQ2kqDNtkNtNd0FU1nPWQFPBo14nJiZ3VkaukVwnzB9DGy6lCrfSSX6cHAEjxHE">
+        <m:Map x:Name="map" CredentialsProvider="">
         </m:Map>
     </Grid>
 </Window>
