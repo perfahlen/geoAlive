@@ -9,15 +9,14 @@ using XSockets.Client40.Common.Interfaces;
 
 namespace wpfMap
 {
+    public delegate void GeoCarEventHandler(string id, Location location);
     public class DataClient
     {
-
-        Map map;
+        public event GeoCarEventHandler ReceivedGeoCarEvent;
+        
         MainWindow main;
-        public DataClient(Map map, MainWindow window)
+        public DataClient()
         {
-            this.map = map;
-            this.main = window;
             initConnection();
         }
 
@@ -28,12 +27,10 @@ namespace wpfMap
 
             client.Controller("geocars").On<GeoCar>("pos", d =>
             {
-                System.Diagnostics.Trace.WriteLine(d);
-                main.UpdatePushpin(d.Id, new Location() { Latitude = d.GeoData.Lat, Longitude = d.GeoData.Lng });
+                ReceivedGeoCarEvent(d.Id, new Location() { Latitude = d.GeoData.Lat, Longitude = d.GeoData.Lng });
             });
 
             client.Open();
         }
-        
     }
 }
